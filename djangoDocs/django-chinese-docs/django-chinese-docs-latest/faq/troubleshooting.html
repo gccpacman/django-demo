@@ -1,0 +1,272 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Troubleshooting &mdash; Django 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/badge_only.css" type="text/css" />
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+    <link rel="top" title="Django 1.5 documentation" href="../index.html" />
+    <link rel="up" title="Django FAQ" href="index.html" />
+    <link rel="next" title="API 参考" href="../ref/index.html" />
+    <link rel="prev" title="FAQ: Contributing code" href="contributing.html" />
+
+ 
+<script type="text/javascript" src="../templatebuiltins.js"></script>
+<script type="text/javascript">
+(function($) {
+    if (!django_template_builtins) {
+       // templatebuiltins.js missing, do nothing.
+       return;
+    }
+    $(document).ready(function() {
+        // Hyperlink Django template tags and filters
+        var base = "../ref/templates/builtins.html";
+        if (base == "#") {
+            // Special case for builtins.html itself
+            base = "";
+        }
+        // Tags are keywords, class '.k'
+        $("div.highlight\\-html\\+django span.k").each(function(i, elem) {
+             var tagname = $(elem).text();
+             if ($.inArray(tagname, django_template_builtins.ttags) != -1) {
+                 var fragment = tagname.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + tagname + "</a>");
+             }
+        });
+        // Filters are functions, class '.nf'
+        $("div.highlight\\-html\\+django span.nf").each(function(i, elem) {
+             var filtername = $(elem).text();
+             if ($.inArray(filtername, django_template_builtins.tfilters) != -1) {
+                 var fragment = filtername.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + filtername + "</a>");
+             }
+        });
+    });
+})(jQuery);
+</script>
+
+<!-- RTD Extra Head -->
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "django-chinese-docs",
+    version: "latest",
+    page: "faq/troubleshooting",
+    theme: "djangodocs",
+    docroot: "/docs/"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "django-chinese-docs";
+  var page_name = "faq/troubleshooting";
+  var html_theme = "djangodocs";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+
+
+<!-- User Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39025295-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End User Analytics Code -->
+
+<!-- end RTD <extrahead> -->
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t6">
+    <div id="hd">
+      <h1><a href="../index.html">Django 1.5 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../index.html">Home</a>  |
+        <a title="Table of contents" href="../contents.html">Table of contents</a>  |
+        <a title="Global index" href="../genindex.html">Index</a>  |
+        <a title="Module index" href="../py-modindex.html">Modules</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="contributing.html" title="FAQ: Contributing code">previous</a> 
+     |
+    <a href="index.html" title="Django FAQ" accesskey="U">up</a>
+   |
+    <a href="../ref/index.html" title="API 参考">next</a> &raquo;</div>
+    </div>
+    
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="faq-troubleshooting">
+            
+  <div class="section" id="s-troubleshooting">
+<span id="troubleshooting"></span><h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<p>This page contains some advice about errors and problems commonly encountered
+during the development of Django applications.</p>
+<div class="section" id="s-problems-running-django-admin-py">
+<span id="s-troubleshooting-django-admin-py"></span><span id="problems-running-django-admin-py"></span><span id="troubleshooting-django-admin-py"></span><h2>Problems running django-admin.py<a class="headerlink" href="#problems-running-django-admin-py" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="s-command-not-found-django-admin-py">
+<span id="command-not-found-django-admin-py"></span><h3>&#8220;command not found: django-admin.py&#8221;<a class="headerlink" href="#command-not-found-django-admin-py" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../ref/django-admin.html"><em>django-admin.py</em></a> should be on your system path if you
+installed Django via <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span></tt>. If it&#8217;s not on your path, you can
+find it in <tt class="docutils literal"><span class="pre">site-packages/django/bin</span></tt>, where <tt class="docutils literal"><span class="pre">site-packages</span></tt> is a directory
+within your Python installation. Consider symlinking to <a class="reference internal" href="../ref/django-admin.html"><em>django-admin.py</em></a> from some place on your path, such as
+<tt class="file docutils literal"><span class="pre">/usr/local/bin</span></tt>.</p>
+</div>
+<div class="section" id="s-script-name-may-differ-in-distribution-packages">
+<span id="script-name-may-differ-in-distribution-packages"></span><h3>Script name may differ in distribution packages<a class="headerlink" href="#script-name-may-differ-in-distribution-packages" title="Permalink to this headline">¶</a></h3>
+<p>If you installed Django using a Linux distribution&#8217;s package manager
+(e.g. <tt class="docutils literal"><span class="pre">apt-get</span></tt> or <tt class="docutils literal"><span class="pre">yum</span></tt>) <tt class="docutils literal"><span class="pre">django-admin.py</span></tt> may have been renamed to
+<tt class="docutils literal"><span class="pre">django-admin</span></tt>; use that instead.</p>
+</div>
+<div class="section" id="s-mac-os-x-permissions">
+<span id="mac-os-x-permissions"></span><h3>Mac OS X permissions<a class="headerlink" href="#mac-os-x-permissions" title="Permalink to this headline">¶</a></h3>
+<p>If you&#8217;re using Mac OS X, you may see the message &#8220;permission denied&#8221; when
+you try to run <tt class="docutils literal"><span class="pre">django-admin.py</span></tt>. This is because, on Unix-based systems like
+OS X, a file must be marked as &#8220;executable&#8221; before it can be run as a program.
+To do this, open Terminal.app and navigate (using the <tt class="docutils literal"><span class="pre">cd</span></tt> command) to the
+directory where <a class="reference internal" href="../ref/django-admin.html"><em>django-admin.py</em></a> is installed, then
+run the command <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">django-admin.py</span></tt>.</p>
+</div>
+<div class="section" id="s-running-virtualenv-on-windows">
+<span id="running-virtualenv-on-windows"></span><h3>Running virtualenv on Windows<a class="headerlink" href="#running-virtualenv-on-windows" title="Permalink to this headline">¶</a></h3>
+<p>If you used <a class="reference external" href="http://www.virtualenv.org/">virtualenv</a> to <a class="reference internal" href="../topics/install.html#installing-official-release"><em>install Django</em></a>
+on Windows, you may get an <tt class="docutils literal"><span class="pre">ImportError</span></tt> when you try to run
+<tt class="docutils literal"><span class="pre">django-admin.py</span></tt>. This is because Windows does not run the
+Python interpreter from your virtual environment unless you invoke it
+directly. Instead, prefix all commands that use .py files with <tt class="docutils literal"><span class="pre">python</span></tt> and
+use the full path to the file, like so:
+<tt class="docutils literal"><span class="pre">python</span> <span class="pre">C:\pythonXY\Scripts\django-admin.py</span></tt>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>         
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#problems-running-django-admin-py">Problems running django-admin.py</a><ul>
+<li><a class="reference internal" href="#command-not-found-django-admin-py">&#8220;command not found: django-admin.py&#8221;</a></li>
+<li><a class="reference internal" href="#script-name-may-differ-in-distribution-packages">Script name may differ in distribution packages</a></li>
+<li><a class="reference internal" href="#mac-os-x-permissions">Mac OS X permissions</a></li>
+<li><a class="reference internal" href="#running-virtualenv-on-windows">Running virtualenv on Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>Browse</h3>
+  <ul>
+    
+      <li>Prev: <a href="contributing.html">FAQ: Contributing code</a></li>
+    
+    
+      <li>Next: <a href="../ref/index.html">API 参考</a></li>
+    
+  </ul>
+  <h3>You are here:</h3>
+  <ul>
+      <li>
+        <a href="../index.html">Django 1.5 documentation</a>
+        
+          <ul><li><a href="index.html">Django FAQ</a>
+        
+        <ul><li>Troubleshooting</li></ul>
+        </li></ul>
+      </li>
+  </ul>  
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/faq/troubleshooting.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+              <h3>Last update:</h3>
+              <p class="topless">Dec 02, 2013</p>
+          </div> 
+        
+      
+    </div>
+    
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="contributing.html" title="FAQ: Contributing code">previous</a> 
+     |
+    <a href="index.html" title="Django FAQ" accesskey="U">up</a>
+   |
+    <a href="../ref/index.html" title="API 参考">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

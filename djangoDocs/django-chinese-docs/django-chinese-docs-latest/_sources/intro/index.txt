@@ -1,0 +1,35 @@
+新手入门
+===============
+
+Django 新手？或刚开始 web 开发？恭喜你，来对地方了：阅读以下为新手快速入门所准备的文章吧。
+
+.. toctree::
+   :maxdepth: 1
+
+   overview
+   install
+   tutorial01
+   tutorial02
+   tutorial03
+   tutorial04
+   tutorial05
+   reusable-apps
+   whatsnext
+   contributing
+
+.. seealso::
+
+    如果你是初学 Python_,你也许会想从了解这门语言开始。Django 是 100% 基于
+    Python 的， 因此，如果你对 Python 有坚实的基础，那么你必定将会使用 Django
+    得心应手。
+    
+    如果你是编程新手，那么你最好先看看 `编程新手 Python 资源列表`_
+
+    如果你有其他语言的编程经验并想快速学习 Python ，那么我们推荐 `Dive Into Python`_ (有 `纸质书`_ 和 `中文版`_). 如果这本书不符合你的要求，这里还有许多其他 `关于 Python 的书`_.
+
+    .. _python: http://python.org/
+    .. _编程新手 Python 资源列表: http://wiki.python.org/moin/BeginnersGuide/NonProgrammers
+    .. _dive into python: http://diveintopython.net/
+    .. _纸质书: http://www.amazon.com/exec/obidos/ASIN/1590593561/ref=nosim/jacobian20
+    .. _中文版: http://woodpecker.org.cn/diveintopython/    
+    .. _关于 Python 的书: http://wiki.python.org/moin/PythonBooks

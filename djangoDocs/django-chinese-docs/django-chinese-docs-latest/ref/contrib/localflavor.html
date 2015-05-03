@@ -1,0 +1,366 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The “local flavor” add-ons &mdash; Django 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/badge_only.css" type="text/css" />
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+    <link rel="top" title="Django 1.5 documentation" href="../../index.html" />
+    <link rel="up" title="contrib packages" href="index.html" />
+    <link rel="next" title="django.contrib.markup" href="markup.html" />
+    <link rel="prev" title="django.contrib.humanize" href="humanize.html" />
+
+ 
+<script type="text/javascript" src="../../templatebuiltins.js"></script>
+<script type="text/javascript">
+(function($) {
+    if (!django_template_builtins) {
+       // templatebuiltins.js missing, do nothing.
+       return;
+    }
+    $(document).ready(function() {
+        // Hyperlink Django template tags and filters
+        var base = "../templates/builtins.html";
+        if (base == "#") {
+            // Special case for builtins.html itself
+            base = "";
+        }
+        // Tags are keywords, class '.k'
+        $("div.highlight\\-html\\+django span.k").each(function(i, elem) {
+             var tagname = $(elem).text();
+             if ($.inArray(tagname, django_template_builtins.ttags) != -1) {
+                 var fragment = tagname.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + tagname + "</a>");
+             }
+        });
+        // Filters are functions, class '.nf'
+        $("div.highlight\\-html\\+django span.nf").each(function(i, elem) {
+             var filtername = $(elem).text();
+             if ($.inArray(filtername, django_template_builtins.tfilters) != -1) {
+                 var fragment = filtername.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + filtername + "</a>");
+             }
+        });
+    });
+})(jQuery);
+</script>
+
+<!-- RTD Extra Head -->
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "django-chinese-docs",
+    version: "latest",
+    page: "ref/contrib/localflavor",
+    theme: "djangodocs",
+    docroot: "/docs/"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "django-chinese-docs";
+  var page_name = "ref/contrib/localflavor";
+  var html_theme = "djangodocs";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+
+
+<!-- User Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39025295-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End User Analytics Code -->
+
+<!-- end RTD <extrahead> -->
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t6">
+    <div id="hd">
+      <h1><a href="../../index.html">Django 1.5 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../../index.html">Home</a>  |
+        <a title="Table of contents" href="../../contents.html">Table of contents</a>  |
+        <a title="Global index" href="../../genindex.html">Index</a>  |
+        <a title="Module index" href="../../py-modindex.html">Modules</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="humanize.html" title="django.contrib.humanize">previous</a> 
+     |
+    <a href="../index.html" title="API 参考" accesskey="U">up</a>
+   |
+    <a href="markup.html" title="django.contrib.markup">next</a> &raquo;</div>
+    </div>
+    
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="ref-contrib-localflavor">
+            
+  <div class="section" id="s-module-django.contrib.localflavor">
+<span id="s-the-local-flavor-add-ons"></span><span id="module-django.contrib.localflavor"></span><span id="the-local-flavor-add-ons"></span><h1>The &#8220;local flavor&#8221; add-ons<a class="headerlink" href="#module-django.contrib.localflavor" title="Permalink to this headline">¶</a></h1>
+<p>Historically, Django has shipped with <tt class="docutils literal"><span class="pre">django.contrib.localflavor</span></tt> &#8211;
+assorted pieces of code that are useful for particular countries or cultures.
+Starting with Django 1.5, we&#8217;ve started the process of moving the code to
+outside packages (i.e., packages distributed separately from Django), for
+easier maintenance and to trim the size of Django&#8217;s codebase.</p>
+<p>The localflavor packages are named <tt class="docutils literal"><span class="pre">django-localflavor-*</span></tt>, where the asterisk
+is an <a class="reference external" href="http://www.iso.org/iso/country_codes.htm">ISO 3166 country code</a>. For example: <tt class="docutils literal"><span class="pre">django-localflavor-us</span></tt> is the
+localflavor package for the U.S.A.</p>
+<p>Most of these <tt class="docutils literal"><span class="pre">localflavor</span></tt> add-ons are country-specific fields for the
+<a class="reference internal" href="../../topics/forms/index.html"><em>forms</em></a> framework &#8211; for example, a
+<tt class="docutils literal"><span class="pre">USStateField</span></tt> that knows how to validate U.S. state abbreviations and a
+<tt class="docutils literal"><span class="pre">FISocialSecurityNumber</span></tt> that knows how to validate Finnish social security
+numbers.</p>
+<p>To use one of these localized components, just import the relevant subpackage.
+For example, here&#8217;s how you can create a form with a field representing a
+French telephone number:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django_localflavor_fr.forms</span> <span class="kn">import</span> <span class="n">FRPhoneNumberField</span>
+
+<span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">my_french_phone_no</span> <span class="o">=</span> <span class="n">FRPhoneNumberField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For documentation on a given country&#8217;s localflavor helpers, see its README
+file.</p>
+<div class="section" id="s-how-to-migrate">
+<span id="s-localflavor-how-to-migrate"></span><span id="how-to-migrate"></span><span id="localflavor-how-to-migrate"></span><h2>How to migrate<a class="headerlink" href="#how-to-migrate" title="Permalink to this headline">¶</a></h2>
+<p>If you&#8217;ve used the old <tt class="docutils literal"><span class="pre">django.contrib.localflavor</span></tt> package, follow these two
+easy steps to update your code:</p>
+<ol class="arabic">
+<li><p class="first">Install the appropriate third-party <tt class="docutils literal"><span class="pre">django-localflavor-*</span></tt> package(s).
+Go to <a class="reference external" href="https://github.com/django/">https://github.com/django/</a> and find the package for your country.</p>
+</li>
+<li><p class="first">Change your app&#8217;s import statements to reference the new packages.</p>
+<p>For example, change this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib.localflavor.fr.forms</span> <span class="kn">import</span> <span class="n">FRPhoneNumberField</span>
+</pre></div>
+</div>
+<p>...to this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django_localflavor_fr.forms</span> <span class="kn">import</span> <span class="n">FRPhoneNumberField</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The code in the new packages is the same (it was copied directly from Django),
+so you don&#8217;t have to worry about backwards compatibility in terms of
+functionality. Only the imports have changed.</p>
+</div>
+<div class="section" id="s-deprecation-policy">
+<span id="s-localflavor-deprecation-policy"></span><span id="deprecation-policy"></span><span id="localflavor-deprecation-policy"></span><h2>Deprecation policy<a class="headerlink" href="#deprecation-policy" title="Permalink to this headline">¶</a></h2>
+<p>In Django 1.5, importing from <tt class="docutils literal"><span class="pre">django.contrib.localflavor</span></tt> will result in a
+<tt class="docutils literal"><span class="pre">DeprecationWarning</span></tt>. This means your code will still work, but you should
+change it as soon as possible.</p>
+<p>In Django 1.6, importing from <tt class="docutils literal"><span class="pre">django.contrib.localflavor</span></tt> will no longer
+work.</p>
+</div>
+<div class="section" id="s-supported-countries">
+<span id="s-localflavor-packages"></span><span id="supported-countries"></span><span id="localflavor-packages"></span><h2>Supported countries<a class="headerlink" href="#supported-countries" title="Permalink to this headline">¶</a></h2>
+<p>The following countries have django-localflavor- packages.</p>
+<ul class="simple">
+<li>Argentina: <a class="reference external" href="https://github.com/django/django-localflavor-ar">https://github.com/django/django-localflavor-ar</a></li>
+<li>Australia: <a class="reference external" href="https://github.com/django/django-localflavor-au">https://github.com/django/django-localflavor-au</a></li>
+<li>Austria: <a class="reference external" href="https://github.com/django/django-localflavor-at">https://github.com/django/django-localflavor-at</a></li>
+<li>Belgium: <a class="reference external" href="https://github.com/django/django-localflavor-be">https://github.com/django/django-localflavor-be</a></li>
+<li>Brazil: <a class="reference external" href="https://github.com/django/django-localflavor-br">https://github.com/django/django-localflavor-br</a></li>
+<li>Canada: <a class="reference external" href="https://github.com/django/django-localflavor-ca">https://github.com/django/django-localflavor-ca</a></li>
+<li>Chile: <a class="reference external" href="https://github.com/django/django-localflavor-cl">https://github.com/django/django-localflavor-cl</a></li>
+<li>China: <a class="reference external" href="https://github.com/django/django-localflavor-cn">https://github.com/django/django-localflavor-cn</a></li>
+<li>Colombia: <a class="reference external" href="https://github.com/django/django-localflavor-co">https://github.com/django/django-localflavor-co</a></li>
+<li>Croatia: <a class="reference external" href="https://github.com/django/django-localflavor-cr">https://github.com/django/django-localflavor-cr</a></li>
+<li>Czech Republic: <a class="reference external" href="https://github.com/django/django-localflavor-cz">https://github.com/django/django-localflavor-cz</a></li>
+<li>Ecuador: <a class="reference external" href="https://github.com/django/django-localflavor-ec">https://github.com/django/django-localflavor-ec</a></li>
+<li>Finland: <a class="reference external" href="https://github.com/django/django-localflavor-fi">https://github.com/django/django-localflavor-fi</a></li>
+<li>France: <a class="reference external" href="https://github.com/django/django-localflavor-fr">https://github.com/django/django-localflavor-fr</a></li>
+<li>Germany: <a class="reference external" href="https://github.com/django/django-localflavor-de">https://github.com/django/django-localflavor-de</a></li>
+<li>Hong Kong: <a class="reference external" href="https://github.com/django/django-localflavor-hk">https://github.com/django/django-localflavor-hk</a></li>
+<li>Iceland: <a class="reference external" href="https://github.com/django/django-localflavor-is">https://github.com/django/django-localflavor-is</a></li>
+<li>India: <a class="reference external" href="https://github.com/django/django-localflavor-in">https://github.com/django/django-localflavor-in</a></li>
+<li>Indonesia: <a class="reference external" href="https://github.com/django/django-localflavor-id">https://github.com/django/django-localflavor-id</a></li>
+<li>Ireland: <a class="reference external" href="https://github.com/django/django-localflavor-ie">https://github.com/django/django-localflavor-ie</a></li>
+<li>Israel: <a class="reference external" href="https://github.com/django/django-localflavor-il">https://github.com/django/django-localflavor-il</a></li>
+<li>Italy: <a class="reference external" href="https://github.com/django/django-localflavor-it">https://github.com/django/django-localflavor-it</a></li>
+<li>Japan: <a class="reference external" href="https://github.com/django/django-localflavor-jp">https://github.com/django/django-localflavor-jp</a></li>
+<li>Kuwait: <a class="reference external" href="https://github.com/django/django-localflavor-kw">https://github.com/django/django-localflavor-kw</a></li>
+<li>Lithuania: <a class="reference external" href="https://github.com/simukis/django-localflavor-lt">https://github.com/simukis/django-localflavor-lt</a></li>
+<li>Macedonia: <a class="reference external" href="https://github.com/django/django-localflavor-mk">https://github.com/django/django-localflavor-mk</a></li>
+<li>Mexico: <a class="reference external" href="https://github.com/django/django-localflavor-mx">https://github.com/django/django-localflavor-mx</a></li>
+<li>The Netherlands: <a class="reference external" href="https://github.com/django/django-localflavor-nl">https://github.com/django/django-localflavor-nl</a></li>
+<li>Norway: <a class="reference external" href="https://github.com/django/django-localflavor-no">https://github.com/django/django-localflavor-no</a></li>
+<li>Peru: <a class="reference external" href="https://github.com/django/django-localflavor-pe">https://github.com/django/django-localflavor-pe</a></li>
+<li>Poland: <a class="reference external" href="https://github.com/django/django-localflavor-pl">https://github.com/django/django-localflavor-pl</a></li>
+<li>Portugal: <a class="reference external" href="https://github.com/django/django-localflavor-pt">https://github.com/django/django-localflavor-pt</a></li>
+<li>Paraguay: <a class="reference external" href="https://github.com/django/django-localflavor-py">https://github.com/django/django-localflavor-py</a></li>
+<li>Romania: <a class="reference external" href="https://github.com/django/django-localflavor-ro">https://github.com/django/django-localflavor-ro</a></li>
+<li>Russia: <a class="reference external" href="https://github.com/django/django-localflavor-ru">https://github.com/django/django-localflavor-ru</a></li>
+<li>Slovakia: <a class="reference external" href="https://github.com/django/django-localflavor-sk">https://github.com/django/django-localflavor-sk</a></li>
+<li>Slovenia: <a class="reference external" href="https://github.com/django/django-localflavor-si">https://github.com/django/django-localflavor-si</a></li>
+<li>South Africa: <a class="reference external" href="https://github.com/django/django-localflavor-za">https://github.com/django/django-localflavor-za</a></li>
+<li>Spain: <a class="reference external" href="https://github.com/django/django-localflavor-es">https://github.com/django/django-localflavor-es</a></li>
+<li>Sweden: <a class="reference external" href="https://github.com/django/django-localflavor-se">https://github.com/django/django-localflavor-se</a></li>
+<li>Switzerland: <a class="reference external" href="https://github.com/django/django-localflavor-ch">https://github.com/django/django-localflavor-ch</a></li>
+<li>Turkey: <a class="reference external" href="https://github.com/django/django-localflavor-tr">https://github.com/django/django-localflavor-tr</a></li>
+<li>United Kingdom: <a class="reference external" href="https://github.com/django/django-localflavor-gb">https://github.com/django/django-localflavor-gb</a></li>
+<li>United States of America: <a class="reference external" href="https://github.com/django/django-localflavor-us">https://github.com/django/django-localflavor-us</a></li>
+<li>Uruguay: <a class="reference external" href="https://github.com/django/django-localflavor-uy">https://github.com/django/django-localflavor-uy</a></li>
+</ul>
+</div>
+<div class="section" id="s-django-contrib-localflavor-generic">
+<span id="django-contrib-localflavor-generic"></span><h2>django.contrib.localflavor.generic<a class="headerlink" href="#django-contrib-localflavor-generic" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">django.contrib.localflavor.generic</span></tt> package, which hasn&#8217;t been removed from
+Django yet, contains useful code that is not specific to one particular country
+or culture. Currently, it defines date, datetime and split datetime input
+fields based on those from <a class="reference internal" href="../../topics/forms/index.html"><em>forms</em></a>, but with non-US
+default formats. Here&#8217;s an example of how to use them:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.contrib.localflavor</span> <span class="kn">import</span> <span class="n">generic</span>
+
+<span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">my_date_field</span> <span class="o">=</span> <span class="n">generic</span><span class="o">.</span><span class="n">forms</span><span class="o">.</span><span class="n">DateField</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="s-internationalization-of-localflavors">
+<span id="internationalization-of-localflavors"></span><h2>Internationalization of localflavors<a class="headerlink" href="#internationalization-of-localflavors" title="Permalink to this headline">¶</a></h2>
+<p>To activate translations for a newly-created <tt class="docutils literal"><span class="pre">localflavor</span></tt> application, you
+must include the application&#8217;s name (e.g. <tt class="docutils literal"><span class="pre">django_localflavor_jp</span></tt>) in the
+<a class="reference internal" href="../settings.html#std:setting-INSTALLED_APPS"><tt class="xref std std-setting docutils literal"><span class="pre">INSTALLED_APPS</span></tt></a> setting, so the internationalization system can find
+the catalog, as explained in <a class="reference internal" href="../../topics/i18n/translation.html#how-django-discovers-translations"><em>How Django discovers translations</em></a>.</p>
+<p>If you&#8217;re still using the legacy <tt class="docutils literal"><span class="pre">localflavor</span></tt> application, you must include
+<a class="reference internal" href="#module-django.contrib.localflavor" title="django.contrib.localflavor: A collection of various Django snippets that are useful only for a particular country or culture."><tt class="xref py py-mod docutils literal"><span class="pre">django.contrib.localflavor</span></tt></a> in <a class="reference internal" href="../settings.html#std:setting-INSTALLED_APPS"><tt class="xref std std-setting docutils literal"><span class="pre">INSTALLED_APPS</span></tt></a> (that will
+raise a <tt class="docutils literal"><span class="pre">DeprecationWarning</span></tt>).</p>
+</div>
+</div>
+
+
+          </div>         
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The &#8220;local flavor&#8221; add-ons</a><ul>
+<li><a class="reference internal" href="#how-to-migrate">How to migrate</a></li>
+<li><a class="reference internal" href="#deprecation-policy">Deprecation policy</a></li>
+<li><a class="reference internal" href="#supported-countries">Supported countries</a></li>
+<li><a class="reference internal" href="#django-contrib-localflavor-generic">django.contrib.localflavor.generic</a></li>
+<li><a class="reference internal" href="#internationalization-of-localflavors">Internationalization of localflavors</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>Browse</h3>
+  <ul>
+    
+      <li>Prev: <a href="humanize.html">django.contrib.humanize</a></li>
+    
+    
+      <li>Next: <a href="markup.html">django.contrib.markup</a></li>
+    
+  </ul>
+  <h3>You are here:</h3>
+  <ul>
+      <li>
+        <a href="../../index.html">Django 1.5 documentation</a>
+        
+          <ul><li><a href="../index.html">API 参考</a>
+        
+          <ul><li><a href="index.html"><tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">contrib</span></tt> packages</a>
+        
+        <ul><li>The &#8220;local flavor&#8221; add-ons</li></ul>
+        </li></ul></li></ul>
+      </li>
+  </ul>  
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/ref/contrib/localflavor.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+              <h3>Last update:</h3>
+              <p class="topless">Dec 02, 2013</p>
+          </div> 
+        
+      
+    </div>
+    
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="humanize.html" title="django.contrib.humanize">previous</a> 
+     |
+    <a href="../index.html" title="API 参考" accesskey="U">up</a>
+   |
+    <a href="markup.html" title="django.contrib.markup">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

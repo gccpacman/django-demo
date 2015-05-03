@@ -1,0 +1,288 @@
+
+.. _index:
+
+====================
+Django 中文文档
+====================
+
+.. rubric::  这里有你需要知道的有关 Django 的一切。
+
+Getting help
+============  
+
+有问题吗？ 我们希望以下对大家有所帮助！
+
+* 试试 :doc:`常见问题 <faq/index>` -- 它对许多常见的问题作了解答。
+
+* 寻找特定的信息？ 试试  :ref:`文档索引<genindex>`, :ref:`模块索引<modindex>` 或者 :doc:`文档目录 <contents>` 。
+
+* 搜索 `django-users邮件列表 <archives of the django-users mailing list>`_,或者 
+  `提交一个问题 <post a question>`_ 。
+
+* 在 `#django IRC channel`_ 上提问, 或者搜索 `IRC logs`_ 看下是否已经有人问过类似的问题。
+
+* 在我们的 `ticket tracker`_ 上报告 Django 的 bug 。
+
+.. _archives of the django-users mailing list: http://groups.google.com/group/django-users/
+.. _post a question: http://groups.google.com/group/django-users/
+.. _#django IRC channel: irc://irc.freenode.net/django
+.. _IRC logs: http://django-irc-logs.com/
+.. _ticket tracker: https://code.djangoproject.com/
+
+新手入门
+===========
+
+初次接触 Django 或编程吗? 从这里开始吧!
+
+* **从零开始:**
+  :doc:`初探 <intro/overview>` |
+  :doc:`安装 <intro/install>`
+
+* **新手教程:**
+  :doc:`第1部分 <intro/tutorial01>` |
+  :doc:`第2部分 <intro/tutorial02>` |
+  :doc:`第3部分 <intro/tutorial03>` |
+  :doc:`第4部分 <intro/tutorial04>` |
+  :doc:`第5部分 <intro/tutorial05>`
+
+* **进阶教程:**
+  :doc:`如何编写可重用的应用程序 <intro/reusable-apps>` |
+  :doc:`为Django编写属于你的首个补丁 <intro/contributing>`
+
+模型层(model)
+===============
+
+Django 提供了一个抽象层(the "models"),对您的 web 应用中的数据进行构建及操纵。通过以下内容来了解更多:
+
+* **模型(Models):**
+  :doc:`模型语法 <topics/db/models>` |
+  :doc:`字段类型 <ref/models/fields>` |
+  :doc:`Meta选项 <ref/models/options>`
+
+* **查询集(QuerySets):**
+  :doc:`执行查询 <topics/db/queries>` |
+  :doc:`QuerySet 方法参考<ref/models/querysets>`
+
+* **模型实例(Model instances):**
+  :doc:`Instance 方法 <ref/models/instances>` |
+  :doc:`访问关联对象 <ref/models/relations>`
+
+* **进阶:**
+  :doc:`管理器(Managers) <topics/db/managers>` |
+  :doc:`SQL 语句查询 <topics/db/sql>` |
+  :doc:`事务管理 <topics/db/transactions>` |
+  :doc:`数据处理 <topics/db/aggregation>` |
+  :doc:`自定义字段 <howto/custom-model-fields>` |
+  :doc:`多数据库 <topics/db/multi-db>`
+
+* **其他:**
+  :doc:`支持的数据库 <ref/databases>` |
+  :doc:`遗留型旧数据库 <howto/legacy-databases>` |
+  :doc:`为模型提供初始数据 <howto/initial-data>` |
+  :doc:`优化数据库访问 <topics/db/optimization>`
+
+视图层(view)
+==============
+
+Django 的视图是封装了处理用户的请求与返回响应的逻辑。通过以下链接来了解视图:
+
+* **基础:**
+  :doc:`URL配置(URLconfs) <topics/http/urls>` |
+  :doc:`视图定义 <topics/http/views>` |
+  :doc:`快捷方法 <topics/http/shortcuts>` |
+  :doc:`装饰器 <topics/http/decorators>`
+
+* **参考:**
+  :doc:`Request/response 对象 <ref/request-response>` |
+  :doc:`TemplateResponse 对象 <ref/template-response>`
+
+* **文件上传:**
+  :doc:`概述 <topics/http/file-uploads>` |
+  :doc:`File 对象 <ref/files/file>` |
+  :doc:`存储 API <ref/files/storage>` |
+  :doc:`文件管理 <topics/files>` |
+  :doc:`自定义存储 <howto/custom-file-storage>`
+
+* **视图基类:**
+  :doc:`概述 <topics/class-based-views/index>` |
+  :doc:`内置显示视图 <topics/class-based-views/generic-display>` |
+  :doc:`内置编辑视图 <topics/class-based-views/generic-editing>` |
+  :doc:`混合使用 <topics/class-based-views/mixins>` |
+  :doc:`API 参考 <ref/class-based-views/index>` |
+  :doc:`分类索引 <ref/class-based-views/flattened-index>`
+
+* **进阶:**
+  :doc:`生成 CSV <howto/outputting-csv>` |
+  :doc:`生成 PDF <howto/outputting-pdf>`
+
+* **中间件:**
+  :doc:`概述 <topics/http/middleware>` |
+  :doc:`内置中间件 <ref/middleware>`
+
+模板层(template)
+==================
+
+模板层提供了设计友好的语法来展示信息给用户。了解语法可让设计师知道如何使用，让程序员知道如何扩展：
+
+* **For 设计师:**
+  :doc:`语法概述 <topics/templates>` |
+  :doc:`内置 tags 和 filters <ref/templates/builtins>` |
+  :doc:`Web 设计助手 <ref/contrib/webdesign>` |
+  :doc:`人性化 <ref/contrib/humanize>`
+
+* **For 程序员:**
+  :doc:`模板 API <ref/templates/api>` |
+  :doc:`自定义 tags 和 filters <howto/custom-template-tags>`
+
+表单(Forms)
+============
+
+Django 提供了一个丰富的框架可便利地创建表单及操作表单数据。
+
+* **基础:**
+  :doc:`概述 <topics/forms/index>` |
+  :doc:`表单 API <ref/forms/api>` |
+  :doc:`内置字段 <ref/forms/fields>` |
+  :doc:`内置小工具 <ref/forms/widgets>`
+
+* **进阶:**
+  :doc:`模型表单 <topics/forms/modelforms>` |
+  :doc:`表单外观 <topics/forms/media>` |
+  :doc:`表单集 <topics/forms/formsets>` |
+  :doc:`自定义验证 <ref/forms/validation>`
+
+* **附加功能:**
+  :doc:`表单预览 <ref/contrib/formtools/form-preview>` |
+  :doc:`表单向导 <ref/contrib/formtools/form-wizard>`
+
+开发流程
+=======================
+
+了解各种组件和工具来帮助你开发和测试 Django 应用：
+
+* **设置:**
+  :doc:`概述 <topics/settings>` |
+  :doc:`全部设置列表 <ref/settings>`
+
+* **异常:**
+  :doc:`概述 <ref/exceptions>`
+
+* **django-admin.py 和 manage.py:**
+  :doc:`概述 <ref/django-admin>` |
+  :doc:`添加自定义命令 <howto/custom-management-commands>`
+
+* **测试:**
+  :doc:`介绍 <topics/testing/index>` |
+  :doc:`编写和运行测试 <topics/testing/overview>` |
+  :doc:`进阶主题 <topics/testing/advanced>` |
+  :doc:`Doctests <topics/testing/doctests>`
+
+* **部署:**
+  :doc:`概述 <howto/deployment/index>` |
+  :doc:`WSGI servers <howto/deployment/wsgi/index>` |
+  :doc:`FastCGI/SCGI/AJP <howto/deployment/fastcgi>` |
+  :doc:`处理静态文件 <howto/static-files>` |
+  :doc:`通过电子邮件跟踪代码中的错误 <howto/error-reporting>`
+
+管理
+=========
+
+你需要了解所有有关自动管理界面的信息，这是 Django 最流行的特性之一:
+
+* :doc:`管理网站 <ref/contrib/admin/index>`
+* :doc:`管理操作 <ref/contrib/admin/actions>`
+* :doc:`管理文档生成器 <ref/contrib/admin/admindocs>`
+
+安全
+========
+
+开发 Web 应用时安全是最重要一个的主题，Django 提供了多重保护工具和机制:
+
+* :doc:`安全概述 <topics/security>`
+* :doc:`Clickjacking 防护 <ref/clickjacking>`
+* :doc:`跨站请求伪造防护 <ref/contrib/csrf>`
+* :doc:`加密签名 <topics/signing>`
+
+国际化和本地化
+=====================================
+
+Django 提供了一个强大的国际化和本地化框架，以协助您开发支持多国语言和世界各地区的应用：
+
+* :doc:`概述 <topics/i18n/index>` |
+  :doc:`国际化 <topics/i18n/translation>` |
+  :ref:`本地化 <how-to-create-language-files>`
+* :doc:`"Local flavor" <ref/contrib/localflavor>`
+* :doc:`时区 </topics/i18n/timezones>`
+
+Python的兼容性
+====================
+
+Django 目标是兼容多个不同特性和版本的 Python:
+
+* :doc:`Jython 支持 <howto/jython>`
+* :doc:`Python 3 兼容性 <topics/python3>`
+
+地理框架
+====================
+
+:doc:`GeoDjango <ref/contrib/gis/index>` 打算做一个世界级的地理 Web 框架。
+它的目标是尽可能轻松的构建 GIS Web 应用和应用空间数据的能力。
+
+常用的web应用工具
+============================
+
+Django 为开发 Web 应用的需要提供了多种常见的工具：
+
+* :doc:`认证 <topics/auth/index>`
+* :doc:`缓存 <topics/cache>`
+* :doc:`日志 <topics/logging>`
+* :doc:`发送电子邮件 <topics/email>`
+* :doc:`聚合供稿(RSS/Atom) <ref/contrib/syndication>`
+* :doc:`评论 <ref/contrib/comments/index>`, :doc:`评论审核 <ref/contrib/comments/moderation>` 和 :doc:`自定义评论 <ref/contrib/comments/custom>`
+* :doc:`分页 <topics/pagination>`
+* :doc:`消息框架 <ref/contrib/messages>`
+* :doc:`序列化 <topics/serialization>`
+* :doc:`Sessions <topics/http/sessions>`
+* :doc:`站点地图 <ref/contrib/sitemaps>`
+* :doc:`静态文件管理 <ref/contrib/staticfiles>`
+* :doc:`数据验证 <ref/validators>`
+
+其他核心功能
+==========================
+
+了解 Django 框架一些其他的核心功能：
+
+* :doc:`按需处理内容 <topics/conditional-view-processing>`
+* :doc:`内容类型和泛型关系 <ref/contrib/contenttypes>`
+* :doc:`数据浏览 <ref/contrib/databrowse>`
+* :doc:`简单页面 <ref/contrib/flatpages>`
+* :doc:`重定向 <ref/contrib/redirects>`
+* :doc:`信号 <topics/signals>`
+* :doc:`sites 框架 <ref/contrib/sites>`
+* :doc:`在 Django 中使用 Unicode <ref/unicode>`
+
+Django 开源项目
+==============================
+
+了解 Django 项目本身的发展过程和你怎么做贡献：
+
+* **社区:**
+  :doc:`如何参与 <internals/contributing/index>` |
+  :doc:`发布过程 <internals/release-process>` |
+  :doc:`团队提交 <internals/committers>` |
+  :doc:`Django 源码库 <internals/git>` |
+  :doc:`安全策略 <internals/security>`
+
+* **设计理念:**
+  :doc:`概述 <misc/design-philosophies>`
+
+* **文档:**
+  :doc:`关于本文档 <internals/contributing/writing-documentation>`
+
+* **第三方发行:**
+  :doc:`概述 <misc/distributions>`
+
+* **Django 的过去:**
+  :doc:`API 稳定性 <misc/api-stability>` |
+  :doc:`发行说明和升级说明 <releases/index>` |
+  :doc:`功能弃用时间轴 <internals/deprecation>`

@@ -1,0 +1,635 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Advanced testing topics &mdash; Django 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/badge_only.css" type="text/css" />
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+    <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+    <link rel="top" title="Django 1.5 documentation" href="../../index.html" />
+    <link rel="up" title="Testing in Django" href="index.html" />
+    <link rel="next" title="User authentication in Django" href="../auth/index.html" />
+    <link rel="prev" title="Django and doctests" href="doctests.html" />
+
+ 
+<script type="text/javascript" src="../../templatebuiltins.js"></script>
+<script type="text/javascript">
+(function($) {
+    if (!django_template_builtins) {
+       // templatebuiltins.js missing, do nothing.
+       return;
+    }
+    $(document).ready(function() {
+        // Hyperlink Django template tags and filters
+        var base = "../../ref/templates/builtins.html";
+        if (base == "#") {
+            // Special case for builtins.html itself
+            base = "";
+        }
+        // Tags are keywords, class '.k'
+        $("div.highlight\\-html\\+django span.k").each(function(i, elem) {
+             var tagname = $(elem).text();
+             if ($.inArray(tagname, django_template_builtins.ttags) != -1) {
+                 var fragment = tagname.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + tagname + "</a>");
+             }
+        });
+        // Filters are functions, class '.nf'
+        $("div.highlight\\-html\\+django span.nf").each(function(i, elem) {
+             var filtername = $(elem).text();
+             if ($.inArray(filtername, django_template_builtins.tfilters) != -1) {
+                 var fragment = filtername.replace(/_/, '-');
+                 $(elem).html("<a href='" + base + "#" + fragment + "'>" + filtername + "</a>");
+             }
+        });
+    });
+})(jQuery);
+</script>
+
+<!-- RTD Extra Head -->
+<script type="text/javascript">
+  // This is included here because other places don't have access to the pagename variable.
+  var READTHEDOCS_DATA = {
+    project: "django-chinese-docs",
+    version: "latest",
+    page: "topics/testing/advanced",
+    theme: "djangodocs",
+    docroot: "/docs/"
+  }
+  // Old variables
+  var doc_version = "latest";
+  var doc_slug = "django-chinese-docs";
+  var page_name = "topics/testing/advanced";
+  var html_theme = "djangodocs";
+</script>
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end RTD Analytics Code -->
+
+
+<!-- User Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39025295-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End User Analytics Code -->
+
+<!-- end RTD <extrahead> -->
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t6">
+    <div id="hd">
+      <h1><a href="../../index.html">Django 1.5 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../../index.html">Home</a>  |
+        <a title="Table of contents" href="../../contents.html">Table of contents</a>  |
+        <a title="Global index" href="../../genindex.html">Index</a>  |
+        <a title="Module index" href="../../py-modindex.html">Modules</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="doctests.html" title="Django and doctests">previous</a> 
+     |
+    <a href="../index.html" title="使用 Django" accesskey="U">up</a>
+   |
+    <a href="../auth/index.html" title="User authentication in Django">next</a> &raquo;</div>
+    </div>
+    
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="topics-testing-advanced">
+            
+  <div class="section" id="s-advanced-testing-topics">
+<span id="advanced-testing-topics"></span><h1>Advanced testing topics<a class="headerlink" href="#advanced-testing-topics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="s-module-django.test.client">
+<span id="s-the-request-factory"></span><span id="module-django.test.client"></span><span id="the-request-factory"></span><h2>The request factory<a class="headerlink" href="#module-django.test.client" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="django.test.client.RequestFactory">
+<em class="property">class </em><tt class="descname">RequestFactory</tt><a class="headerlink" href="#django.test.client.RequestFactory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>The <a class="reference internal" href="#django.test.client.RequestFactory" title="django.test.client.RequestFactory"><tt class="xref py py-class docutils literal"><span class="pre">RequestFactory</span></tt></a> shares the same API as
+the test client. However, instead of behaving like a browser, the
+RequestFactory provides a way to generate a request instance that can
+be used as the first argument to any view. This means you can test a
+view function the same way as you would test any other function &#8211; as
+a black box, with exactly known inputs, testing for specific outputs.</p>
+<p>The API for the <a class="reference internal" href="#django.test.client.RequestFactory" title="django.test.client.RequestFactory"><tt class="xref py py-class docutils literal"><span class="pre">RequestFactory</span></tt></a> is a slightly
+restricted subset of the test client API:</p>
+<ul class="simple">
+<li>It only has access to the HTTP methods <a class="reference internal" href="overview.html#django.test.client.Client.get" title="django.test.client.Client.get"><tt class="xref py py-meth docutils literal"><span class="pre">get()</span></tt></a>,
+<a class="reference internal" href="overview.html#django.test.client.Client.post" title="django.test.client.Client.post"><tt class="xref py py-meth docutils literal"><span class="pre">post()</span></tt></a>, <a class="reference internal" href="overview.html#django.test.client.Client.put" title="django.test.client.Client.put"><tt class="xref py py-meth docutils literal"><span class="pre">put()</span></tt></a>,
+<a class="reference internal" href="overview.html#django.test.client.Client.delete" title="django.test.client.Client.delete"><tt class="xref py py-meth docutils literal"><span class="pre">delete()</span></tt></a>, <a class="reference internal" href="overview.html#django.test.client.Client.head" title="django.test.client.Client.head"><tt class="xref py py-meth docutils literal"><span class="pre">head()</span></tt></a> and
+<a class="reference internal" href="overview.html#django.test.client.Client.options" title="django.test.client.Client.options"><tt class="xref py py-meth docutils literal"><span class="pre">options()</span></tt></a>.</li>
+<li>These methods accept all the same arguments <em>except</em> for
+<tt class="docutils literal"><span class="pre">follows</span></tt>. Since this is just a factory for producing
+requests, it&#8217;s up to you to handle the response.</li>
+<li>It does not support middleware. Session and authentication
+attributes must be supplied by the test itself if required
+for the view to function properly.</li>
+</ul>
+<div class="section" id="s-example">
+<span id="example"></span><h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>The following is a simple unit test using the request factory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">unittest</span>
+<span class="kn">from</span> <span class="nn">django.test.client</span> <span class="kn">import</span> <span class="n">RequestFactory</span>
+
+<span class="k">class</span> <span class="nc">SimpleTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Every test needs access to the request factory.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factory</span> <span class="o">=</span> <span class="n">RequestFactory</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">test_details</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Create an instance of a GET request.</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;/customer/details&#39;</span><span class="p">)</span>
+
+        <span class="c"># Test my_view() as if it were deployed at /customer/details</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="s-tests-and-multiple-databases">
+<span id="s-topics-testing-advanced-multidb"></span><span id="tests-and-multiple-databases"></span><span id="topics-testing-advanced-multidb"></span><h2>Tests and multiple databases<a class="headerlink" href="#tests-and-multiple-databases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="s-testing-master-slave-configurations">
+<span id="s-topics-testing-masterslave"></span><span id="testing-master-slave-configurations"></span><span id="topics-testing-masterslave"></span><h3>Testing master/slave configurations<a class="headerlink" href="#testing-master-slave-configurations" title="Permalink to this headline">¶</a></h3>
+<p>If you&#8217;re testing a multiple database configuration with master/slave
+replication, this strategy of creating test databases poses a problem.
+When the test databases are created, there won&#8217;t be any replication,
+and as a result, data created on the master won&#8217;t be seen on the
+slave.</p>
+<p>To compensate for this, Django allows you to define that a database is
+a <em>test mirror</em>. Consider the following (simplified) example database
+configuration:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.mysql&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;myproject&#39;</span><span class="p">,</span>
+        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;dbmaster&#39;</span><span class="p">,</span>
+         <span class="c"># ... plus some other settings</span>
+    <span class="p">},</span>
+    <span class="s">&#39;slave&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.mysql&#39;</span><span class="p">,</span>
+        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="s">&#39;myproject&#39;</span><span class="p">,</span>
+        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;dbslave&#39;</span><span class="p">,</span>
+        <span class="s">&#39;TEST_MIRROR&#39;</span><span class="p">:</span> <span class="s">&#39;default&#39;</span>
+        <span class="c"># ... plus some other settings</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this setup, we have two database servers: <tt class="docutils literal"><span class="pre">dbmaster</span></tt>, described
+by the database alias <tt class="docutils literal"><span class="pre">default</span></tt>, and <tt class="docutils literal"><span class="pre">dbslave</span></tt> described by the
+alias <tt class="docutils literal"><span class="pre">slave</span></tt>. As you might expect, <tt class="docutils literal"><span class="pre">dbslave</span></tt> has been configured
+by the database administrator as a read slave of <tt class="docutils literal"><span class="pre">dbmaster</span></tt>, so in
+normal activity, any write to <tt class="docutils literal"><span class="pre">default</span></tt> will appear on <tt class="docutils literal"><span class="pre">slave</span></tt>.</p>
+<p>If Django created two independent test databases, this would break any
+tests that expected replication to occur. However, the <tt class="docutils literal"><span class="pre">slave</span></tt>
+database has been configured as a test mirror (using the
+<a class="reference internal" href="../../ref/settings.html#std:setting-TEST_MIRROR"><tt class="xref std std-setting docutils literal"><span class="pre">TEST_MIRROR</span></tt></a> setting), indicating that under testing,
+<tt class="docutils literal"><span class="pre">slave</span></tt> should be treated as a mirror of <tt class="docutils literal"><span class="pre">default</span></tt>.</p>
+<p>When the test environment is configured, a test version of <tt class="docutils literal"><span class="pre">slave</span></tt>
+will <em>not</em> be created. Instead the connection to <tt class="docutils literal"><span class="pre">slave</span></tt>
+will be redirected to point at <tt class="docutils literal"><span class="pre">default</span></tt>. As a result, writes to
+<tt class="docutils literal"><span class="pre">default</span></tt> will appear on <tt class="docutils literal"><span class="pre">slave</span></tt> &#8211; but because they are actually
+the same database, not because there is data replication between the
+two databases.</p>
+</div>
+<div class="section" id="s-controlling-creation-order-for-test-databases">
+<span id="s-topics-testing-creation-dependencies"></span><span id="controlling-creation-order-for-test-databases"></span><span id="topics-testing-creation-dependencies"></span><h3>Controlling creation order for test databases<a class="headerlink" href="#controlling-creation-order-for-test-databases" title="Permalink to this headline">¶</a></h3>
+<p>By default, Django will always create the <tt class="docutils literal"><span class="pre">default</span></tt> database first.
+However, no guarantees are made on the creation order of any other
+databases in your test setup.</p>
+<p>If your database configuration requires a specific creation order, you
+can specify the dependencies that exist using the
+<a class="reference internal" href="../../ref/settings.html#std:setting-TEST_DEPENDENCIES"><tt class="xref std std-setting docutils literal"><span class="pre">TEST_DEPENDENCIES</span></tt></a> setting. Consider the following
+(simplified) example database configuration:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="c"># ... db settings</span>
+         <span class="s">&#39;TEST_DEPENDENCIES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;diamonds&#39;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&#39;diamonds&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c"># ... db settings</span>
+    <span class="p">},</span>
+    <span class="s">&#39;clubs&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c"># ... db settings</span>
+        <span class="s">&#39;TEST_DEPENDENCIES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;diamonds&#39;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&#39;spades&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c"># ... db settings</span>
+        <span class="s">&#39;TEST_DEPENDENCIES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;diamonds&#39;</span><span class="p">,</span><span class="s">&#39;hearts&#39;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&#39;hearts&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c"># ... db settings</span>
+        <span class="s">&#39;TEST_DEPENDENCIES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;diamonds&#39;</span><span class="p">,</span><span class="s">&#39;clubs&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Under this configuration, the <tt class="docutils literal"><span class="pre">diamonds</span></tt> database will be created first,
+as it is the only database alias without dependencies. The <tt class="docutils literal"><span class="pre">default</span></tt> and
+<tt class="docutils literal"><span class="pre">clubs</span></tt> alias will be created next (although the order of creation of this
+pair is not guaranteed); then <tt class="docutils literal"><span class="pre">hearts</span></tt>; and finally <tt class="docutils literal"><span class="pre">spades</span></tt>.</p>
+<p>If there are any circular dependencies in the
+<a class="reference internal" href="../../ref/settings.html#std:setting-TEST_DEPENDENCIES"><tt class="xref std std-setting docutils literal"><span class="pre">TEST_DEPENDENCIES</span></tt></a> definition, an <tt class="docutils literal"><span class="pre">ImproperlyConfigured</span></tt>
+exception will be raised.</p>
+</div>
+</div>
+<div class="section" id="s-running-tests-outside-the-test-runner">
+<span id="running-tests-outside-the-test-runner"></span><h2>Running tests outside the test runner<a class="headerlink" href="#running-tests-outside-the-test-runner" title="Permalink to this headline">¶</a></h2>
+<p>If you want to run tests outside of <tt class="docutils literal"><span class="pre">./manage.py</span> <span class="pre">test</span></tt> &#8211; for example,
+from a shell prompt &#8211; you will need to set up the test
+environment first. Django provides a convenience method to do this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.test.utils</span> <span class="kn">import</span> <span class="n">setup_test_environment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setup_test_environment</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This convenience method sets up the test database, and puts other
+Django features into modes that allow for repeatable testing.</p>
+<p>The call to <a class="reference internal" href="#django.test.utils.setup_test_environment" title="django.test.utils.setup_test_environment"><tt class="xref py py-meth docutils literal"><span class="pre">setup_test_environment()</span></tt></a> is made
+automatically as part of the setup of <tt class="docutils literal"><span class="pre">./manage.py</span> <span class="pre">test</span></tt>. You only
+need to manually invoke this method if you&#8217;re not using running your
+tests via Django&#8217;s test runner.</p>
+</div>
+<div class="section" id="s-using-different-testing-frameworks">
+<span id="s-other-testing-frameworks"></span><span id="using-different-testing-frameworks"></span><span id="other-testing-frameworks"></span><h2>Using different testing frameworks<a class="headerlink" href="#using-different-testing-frameworks" title="Permalink to this headline">¶</a></h2>
+<p>Clearly, <a class="reference external" href="http://docs.python.org/2.7/library/doctest.html#doctest" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">doctest</span></tt></a> and <a class="reference external" href="http://docs.python.org/2.7/library/unittest.html#unittest" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">unittest</span></tt></a> are not the only Python testing
+frameworks. While Django doesn&#8217;t provide explicit support for alternative
+frameworks, it does provide a way to invoke tests constructed for an
+alternative framework as if they were normal Django tests.</p>
+<p>When you run <tt class="docutils literal"><span class="pre">./manage.py</span> <span class="pre">test</span></tt>, Django looks at the <a class="reference internal" href="../../ref/settings.html#std:setting-TEST_RUNNER"><tt class="xref std std-setting docutils literal"><span class="pre">TEST_RUNNER</span></tt></a>
+setting to determine what to do. By default, <a class="reference internal" href="../../ref/settings.html#std:setting-TEST_RUNNER"><tt class="xref std std-setting docutils literal"><span class="pre">TEST_RUNNER</span></tt></a> points to
+<tt class="docutils literal"><span class="pre">'django.test.simple.DjangoTestSuiteRunner'</span></tt>. This class defines the default Django
+testing behavior. This behavior involves:</p>
+<ol class="arabic simple">
+<li>Performing global pre-test setup.</li>
+<li>Looking for unit tests and doctests in the <tt class="docutils literal"><span class="pre">models.py</span></tt> and
+<tt class="docutils literal"><span class="pre">tests.py</span></tt> files in each installed application.</li>
+<li>Creating the test databases.</li>
+<li>Running <tt class="docutils literal"><span class="pre">syncdb</span></tt> to install models and initial data into the test
+databases.</li>
+<li>Running the unit tests and doctests that are found.</li>
+<li>Destroying the test databases.</li>
+<li>Performing global post-test teardown.</li>
+</ol>
+<p>If you define your own test runner class and point <a class="reference internal" href="../../ref/settings.html#std:setting-TEST_RUNNER"><tt class="xref std std-setting docutils literal"><span class="pre">TEST_RUNNER</span></tt></a> at
+that class, Django will execute your test runner whenever you run
+<tt class="docutils literal"><span class="pre">./manage.py</span> <span class="pre">test</span></tt>. In this way, it is possible to use any test framework
+that can be executed from Python code, or to modify the Django test execution
+process to satisfy whatever testing requirements you may have.</p>
+<div class="section" id="s-defining-a-test-runner">
+<span id="s-topics-testing-test-runner"></span><span id="defining-a-test-runner"></span><span id="topics-testing-test-runner"></span><h3>Defining a test runner<a class="headerlink" href="#defining-a-test-runner" title="Permalink to this headline">¶</a></h3>
+<p>A test runner is a class defining a <tt class="docutils literal"><span class="pre">run_tests()</span></tt> method. Django ships
+with a <tt class="docutils literal"><span class="pre">DjangoTestSuiteRunner</span></tt> class that defines the default Django
+testing behavior. This class defines the <tt class="docutils literal"><span class="pre">run_tests()</span></tt> entry point,
+plus a selection of other methods that are used to by <tt class="docutils literal"><span class="pre">run_tests()</span></tt> to
+set up, execute and tear down the test suite.</p>
+<dl class="class">
+<dt id="django.test.simple.DjangoTestSuiteRunner">
+<em class="property">class </em><tt class="descname">DjangoTestSuiteRunner</tt>(<em>verbosity=1</em>, <em>interactive=True</em>, <em>failfast=True</em>, <em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p><tt class="docutils literal"><span class="pre">verbosity</span></tt> determines the amount of notification and debug information
+that will be printed to the console; <tt class="docutils literal"><span class="pre">0</span></tt> is no output, <tt class="docutils literal"><span class="pre">1</span></tt> is normal
+output, and <tt class="docutils literal"><span class="pre">2</span></tt> is verbose output.</p>
+<p>If <tt class="docutils literal"><span class="pre">interactive</span></tt> is <tt class="docutils literal"><span class="pre">True</span></tt>, the test suite has permission to ask the
+user for instructions when the test suite is executed. An example of this
+behavior would be asking for permission to delete an existing test
+database. If <tt class="docutils literal"><span class="pre">interactive</span></tt> is <tt class="docutils literal"><span class="pre">False</span></tt>, the test suite must be able to
+run without any manual intervention.</p>
+<p>If <tt class="docutils literal"><span class="pre">failfast</span></tt> is <tt class="docutils literal"><span class="pre">True</span></tt>, the test suite will stop running after the
+first test failure is detected.</p>
+<p>Django will, from time to time, extend the capabilities of
+the test runner by adding new arguments. The <tt class="docutils literal"><span class="pre">**kwargs</span></tt> declaration
+allows for this expansion. If you subclass <tt class="docutils literal"><span class="pre">DjangoTestSuiteRunner</span></tt> or
+write your own test runner, ensure accept and handle the <tt class="docutils literal"><span class="pre">**kwargs</span></tt>
+parameter.</p>
+<div class="versionadded">
+<span class="title">New in Django 1.4.</span> </div>
+<p>Your test runner may also define additional command-line options.
+If you add an <tt class="docutils literal"><span class="pre">option_list</span></tt> attribute to a subclassed test runner,
+those options will be added to the list of command-line options that
+the <a class="reference internal" href="../../ref/django-admin.html#django-admin-test"><tt class="xref std std-djadmin docutils literal"><span class="pre">test</span></tt></a> command can use.</p>
+</dd></dl>
+
+<div class="section" id="s-attributes">
+<span id="attributes"></span><h4>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h4>
+<dl class="attribute">
+<dt id="django.test.simple.DjangoTestSuiteRunner.option_list">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">option_list</tt><a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.option_list" title="Permalink to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<span class="title">New in Django 1.4.</span> </div>
+<p>This is the tuple of <tt class="docutils literal"><span class="pre">optparse</span></tt> options which will be fed into the
+management command&#8217;s <tt class="docutils literal"><span class="pre">OptionParser</span></tt> for parsing arguments. See the
+documentation for Python&#8217;s <tt class="docutils literal"><span class="pre">optparse</span></tt> module for more details.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="s-methods">
+<span id="methods"></span><h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
+<dl class="method">
+<dt id="django.test.simple.DjangoTestSuiteRunner.run_tests">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">run_tests</tt>(<em>test_labels</em>, <em>extra_tests=None</em>, <em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.run_tests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the test suite.</p>
+<p><tt class="docutils literal"><span class="pre">test_labels</span></tt> is a list of strings describing the tests to be run. A test
+label can take one of three forms:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">app.TestCase.test_method</span></tt> &#8211; Run a single test method in a test
+case.</li>
+<li><tt class="docutils literal"><span class="pre">app.TestCase</span></tt> &#8211; Run all the test methods in a test case.</li>
+<li><tt class="docutils literal"><span class="pre">app</span></tt> &#8211; Search for and run all tests in the named application.</li>
+</ul>
+<p>If <tt class="docutils literal"><span class="pre">test_labels</span></tt> has a value of <tt class="docutils literal"><span class="pre">None</span></tt>, the test runner should run
+search for tests in all the applications in <a class="reference internal" href="../../ref/settings.html#std:setting-INSTALLED_APPS"><tt class="xref std std-setting docutils literal"><span class="pre">INSTALLED_APPS</span></tt></a>.</p>
+<p><tt class="docutils literal"><span class="pre">extra_tests</span></tt> is a list of extra <tt class="docutils literal"><span class="pre">TestCase</span></tt> instances to add to the
+suite that is executed by the test runner. These extra tests are run
+in addition to those discovered in the modules listed in <tt class="docutils literal"><span class="pre">test_labels</span></tt>.</p>
+<p>This method should return the number of tests that failed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.test.simple.DjangoTestSuiteRunner.setup_test_environment">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">setup_test_environment</tt>(<em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.setup_test_environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets up the test environment ready for testing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.test.simple.DjangoTestSuiteRunner.build_suite">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">build_suite</tt>(<em>test_labels</em>, <em>extra_tests=None</em>, <em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.build_suite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a test suite that matches the test labels provided.</p>
+<p><tt class="docutils literal"><span class="pre">test_labels</span></tt> is a list of strings describing the tests to be run. A test
+label can take one of three forms:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">app.TestCase.test_method</span></tt> &#8211; Run a single test method in a test
+case.</li>
+<li><tt class="docutils literal"><span class="pre">app.TestCase</span></tt> &#8211; Run all the test methods in a test case.</li>
+<li><tt class="docutils literal"><span class="pre">app</span></tt> &#8211; Search for and run all tests in the named application.</li>
+</ul>
+<p>If <tt class="docutils literal"><span class="pre">test_labels</span></tt> has a value of <tt class="docutils literal"><span class="pre">None</span></tt>, the test runner should run
+search for tests in all the applications in <a class="reference internal" href="../../ref/settings.html#std:setting-INSTALLED_APPS"><tt class="xref std std-setting docutils literal"><span class="pre">INSTALLED_APPS</span></tt></a>.</p>
+<p><tt class="docutils literal"><span class="pre">extra_tests</span></tt> is a list of extra <tt class="docutils literal"><span class="pre">TestCase</span></tt> instances to add to the
+suite that is executed by the test runner. These extra tests are run
+in addition to those discovered in the modules listed in <tt class="docutils literal"><span class="pre">test_labels</span></tt>.</p>
+<p>Returns a <tt class="docutils literal"><span class="pre">TestSuite</span></tt> instance ready to be run.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.test.simple.DjangoTestSuiteRunner.setup_databases">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">setup_databases</tt>(<em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.setup_databases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the test databases.</p>
+<p>Returns a data structure that provides enough detail to undo the changes
+that have been made. This data will be provided to the <tt class="docutils literal"><span class="pre">teardown_databases()</span></tt>
+function at the conclusion of testing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.test.simple.DjangoTestSuiteRunner.run_suite">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">run_suite</tt>(<em>suite</em>, <em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.run_suite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the test suite.</p>
+<p>Returns the result produced by the running the test suite.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.test.simple.DjangoTestSuiteRunner.teardown_databases">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">teardown_databases</tt>(<em>old_config</em>, <em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.teardown_databases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroys the test databases, restoring pre-test conditions.</p>
+<p><tt class="docutils literal"><span class="pre">old_config</span></tt> is a data structure defining the changes in the
+database configuration that need to be reversed. It is the return
+value of the <tt class="docutils literal"><span class="pre">setup_databases()</span></tt> method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.test.simple.DjangoTestSuiteRunner.teardown_test_environment">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">teardown_test_environment</tt>(<em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.teardown_test_environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restores the pre-test environment.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="django.test.simple.DjangoTestSuiteRunner.suite_result">
+<tt class="descclassname">DjangoTestSuiteRunner.</tt><tt class="descname">suite_result</tt>(<em>suite</em>, <em>result</em>, <em>**kwargs</em>)<a class="headerlink" href="#django.test.simple.DjangoTestSuiteRunner.suite_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes and returns a return code based on a test suite, and the result
+from that test suite.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="s-module-django.test.utils">
+<span id="s-testing-utilities"></span><span id="module-django.test.utils"></span><span id="testing-utilities"></span><h3>Testing utilities<a class="headerlink" href="#module-django.test.utils" title="Permalink to this headline">¶</a></h3>
+<p>To assist in the creation of your own test runner, Django provides a number of
+utility methods in the <tt class="docutils literal"><span class="pre">django.test.utils</span></tt> module.</p>
+<dl class="function">
+<dt id="django.test.utils.setup_test_environment">
+<tt class="descname">setup_test_environment</tt>()<a class="headerlink" href="#django.test.utils.setup_test_environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs any global pre-test setup, such as the installing the
+instrumentation of the template rendering system and setting up
+the dummy email outbox.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="django.test.utils.teardown_test_environment">
+<tt class="descname">teardown_test_environment</tt>()<a class="headerlink" href="#django.test.utils.teardown_test_environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs any global post-test teardown, such as removing the black
+magic hooks into the template system and restoring normal email
+services.</p>
+</dd></dl>
+
+<p>The creation module of the database backend (<tt class="docutils literal"><span class="pre">connection.creation</span></tt>)
+also provides some utilities that can be useful during testing.</p>
+<dl class="function">
+<dt id="django.db.connection.creation.create_test_db">
+<tt class="descname">create_test_db</tt>(<span class="optional">[</span><em>verbosity=1</em>, <em>autoclobber=False</em><span class="optional">]</span>)<a class="headerlink" href="#django.db.connection.creation.create_test_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new test database and runs <tt class="docutils literal"><span class="pre">syncdb</span></tt> against it.</p>
+<p><tt class="docutils literal"><span class="pre">verbosity</span></tt> has the same behavior as in <tt class="docutils literal"><span class="pre">run_tests()</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">autoclobber</span></tt> describes the behavior that will occur if a
+database with the same name as the test database is discovered:</p>
+<ul class="simple">
+<li>If <tt class="docutils literal"><span class="pre">autoclobber</span></tt> is <tt class="docutils literal"><span class="pre">False</span></tt>, the user will be asked to
+approve destroying the existing database. <tt class="docutils literal"><span class="pre">sys.exit</span></tt> is
+called if the user does not approve.</li>
+<li>If autoclobber is <tt class="docutils literal"><span class="pre">True</span></tt>, the database will be destroyed
+without consulting the user.</li>
+</ul>
+<p>Returns the name of the test database that it created.</p>
+<p><tt class="docutils literal"><span class="pre">create_test_db()</span></tt> has the side effect of modifying the value of
+<a class="reference internal" href="../../ref/settings.html#std:setting-NAME"><tt class="xref std std-setting docutils literal"><span class="pre">NAME</span></tt></a> in <a class="reference internal" href="../../ref/settings.html#std:setting-DATABASES"><tt class="xref std std-setting docutils literal"><span class="pre">DATABASES</span></tt></a> to match the name of the test
+database.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="django.db.connection.creation.destroy_test_db">
+<tt class="descname">destroy_test_db</tt>(<em>old_database_name</em><span class="optional">[</span>, <em>verbosity=1</em><span class="optional">]</span>)<a class="headerlink" href="#django.db.connection.creation.destroy_test_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroys the database whose name is the value of <a class="reference internal" href="../../ref/settings.html#std:setting-NAME"><tt class="xref std std-setting docutils literal"><span class="pre">NAME</span></tt></a> in
+<a class="reference internal" href="../../ref/settings.html#std:setting-DATABASES"><tt class="xref std std-setting docutils literal"><span class="pre">DATABASES</span></tt></a>, and sets <a class="reference internal" href="../../ref/settings.html#std:setting-NAME"><tt class="xref std std-setting docutils literal"><span class="pre">NAME</span></tt></a> to the value of
+<tt class="docutils literal"><span class="pre">old_database_name</span></tt>.</p>
+<p>The <tt class="docutils literal"><span class="pre">verbosity</span></tt> argument has the same behavior as for
+<a class="reference internal" href="#django.test.simple.DjangoTestSuiteRunner" title="django.test.simple.DjangoTestSuiteRunner"><tt class="xref py py-class docutils literal"><span class="pre">DjangoTestSuiteRunner</span></tt></a>.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="s-integration-with-coverage-py">
+<span id="s-topics-testing-code-coverage"></span><span id="integration-with-coverage-py"></span><span id="topics-testing-code-coverage"></span><h2>Integration with coverage.py<a class="headerlink" href="#integration-with-coverage-py" title="Permalink to this headline">¶</a></h2>
+<p>Code coverage describes how much source code has been tested. It shows which
+parts of your code are being exercised by tests and which are not. It&#8217;s an
+important part of testing applications, so it&#8217;s strongly recommended to check
+the coverage of your tests.</p>
+<p>Django can be easily integrated with <a class="reference external" href="http://nedbatchelder.com/code/coverage/">coverage.py</a>, a tool for measuring code
+coverage of Python programs. First, <a class="reference external" href="http://pypi.python.org/pypi/coverage">install coverage.py</a>. Next, run the
+following from your project folder containing <tt class="docutils literal"><span class="pre">manage.py</span></tt>:</p>
+<div class="highlight-python"><pre>coverage run --source='.' manage.py test myapp</pre>
+</div>
+<p>This runs your tests and collects coverage data of the executed files in your
+project. You can see a report of this data by typing following command:</p>
+<div class="highlight-python"><pre>coverage report</pre>
+</div>
+<p>Note that some Django code was executed while running tests, but it is not
+listed here because of the <tt class="docutils literal"><span class="pre">source</span></tt> flag passed to the previous command.</p>
+<p>For more options like annotated HTML listings detailing missed lines, see the
+<a class="reference external" href="http://nedbatchelder.com/code/coverage/">coverage.py</a> docs.</p>
+</div>
+</div>
+
+
+          </div>         
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../contents.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Advanced testing topics</a><ul>
+<li><a class="reference internal" href="#module-django.test.client">The request factory</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tests-and-multiple-databases">Tests and multiple databases</a><ul>
+<li><a class="reference internal" href="#testing-master-slave-configurations">Testing master/slave configurations</a></li>
+<li><a class="reference internal" href="#controlling-creation-order-for-test-databases">Controlling creation order for test databases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-tests-outside-the-test-runner">Running tests outside the test runner</a></li>
+<li><a class="reference internal" href="#using-different-testing-frameworks">Using different testing frameworks</a><ul>
+<li><a class="reference internal" href="#defining-a-test-runner">Defining a test runner</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-django.test.utils">Testing utilities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#integration-with-coverage-py">Integration with coverage.py</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>Browse</h3>
+  <ul>
+    
+      <li>Prev: <a href="doctests.html">Django and doctests</a></li>
+    
+    
+      <li>Next: <a href="../auth/index.html">User authentication in Django</a></li>
+    
+  </ul>
+  <h3>You are here:</h3>
+  <ul>
+      <li>
+        <a href="../../index.html">Django 1.5 documentation</a>
+        
+          <ul><li><a href="../index.html">使用 Django</a>
+        
+          <ul><li><a href="index.html">Testing in Django</a>
+        
+        <ul><li>Advanced testing topics</li></ul>
+        </li></ul></li></ul>
+      </li>
+  </ul>  
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/topics/testing/advanced.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+              <h3>Last update:</h3>
+              <p class="topless">Dec 02, 2013</p>
+          </div> 
+        
+      
+    </div>
+    
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="doctests.html" title="Django and doctests">previous</a> 
+     |
+    <a href="../index.html" title="使用 Django" accesskey="U">up</a>
+   |
+    <a href="../auth/index.html" title="User authentication in Django">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>
