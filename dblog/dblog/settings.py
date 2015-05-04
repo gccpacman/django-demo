@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.comments',
+    'django.contrib.sites',
+    'django_comments',
     'blog',
 )
 
@@ -72,14 +73,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dblog.wsgi.application'
 
-
+SITE_ID=1
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+#DATABASES = {
+    #'default': {
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #}
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dblogTest',
+        'USER': 'root', 
+        'PASSWORD': 'centos',
+        'HOST': '192.168.195.128',
     }
 }
 

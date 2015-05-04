@@ -1,4 +1,5 @@
 from blog.models import Tag, Author, Article, Classification
+from django.contrib import admin
             
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'website')
