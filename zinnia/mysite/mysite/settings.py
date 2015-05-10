@@ -129,3 +129,6 @@ TIME_ZONE = 'Asia/Shanghai'
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Python markdown needed  -- pip install markdown
+ZINNIA_MARKUP_LANGUAGE ='markdown'
