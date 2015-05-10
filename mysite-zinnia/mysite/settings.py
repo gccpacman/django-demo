@@ -33,11 +33,16 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls',
+    'django_comments',
+    'tagging',
+    'mptt',
+    'zinnia',
+   # 'polls',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,10 +65,13 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                #'django.template.context_processors.debug',
+               # 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.request',
+                'zinnia.context_processors.version',  # Optional
             ],
         },
     },
@@ -79,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'djangoTest',
-        'USER': 'root', 
+        'USER': 'root',
         'PASSWORD': 'centos',
         'HOST': '192.168.195.128',
     }
@@ -106,6 +114,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
