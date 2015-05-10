@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'django_comments',
     'tagging',
     'mptt',
@@ -120,3 +121,5 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+ZINNIA_MARKUP_LANGUAGE ='markdown'

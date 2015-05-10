@@ -16,6 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+
+
+
+
 blog_urls = [
     url(r'^', include('zinnia.urls.capabilities')),
     url(r'^search/', include('zinnia.urls.search')),
@@ -33,8 +37,24 @@ blog_urls = [
     url(r'^blog/', include('zinnia.urls.quick_entry'))
 ]
 
+# from zinnia.sitemaps import TagSitemap
+# from zinnia.sitemaps import EntrySitemap
+# from zinnia.sitemaps import CategorySitemap
+# from zinnia.sitemaps import AuthorSitemap
+
+# sitemaps = {'tags': TagSitemap,
+#                       'blog':EntrySitemap,
+#                       'authors':AuthorSitemap,
+#                       'categories': CategorySitemap,}
+
+
 urlpatterns = [
+   # 'django.contrib.sitemaps.views',
+   # url(r'^sitemap.xml$', 'index', {'sitemaps':sitemaps}),
+   # url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps':sitemaps}),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include(blog_urls, namespace='zinnia'))
+    url(r'^', include(blog_urls, namespace='zinnia')),
 ]
+
+
