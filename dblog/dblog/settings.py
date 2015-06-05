@@ -89,8 +89,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dblogTest',
         'USER': 'root', 
-        'PASSWORD': 'centos',
-        'HOST': '192.168.195.128',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
     }
 }
 
