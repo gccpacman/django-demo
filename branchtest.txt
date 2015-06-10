@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 this is not a test
+=======
+this is for test
+
+
+4 test
+
+
+new line
+
+
+>>>>>>> djangogirl
