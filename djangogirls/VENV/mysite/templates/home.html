@@ -1,0 +1,18 @@
+{{ post_list }}
+
+
+{% for post in post_list %}
+    <div>
+        {{ post.title }}
+        {{ post.created_at|date:"Y / m / d" }}
+        {{ post.photo }}
+        {{ post.content }}
+    </div>
+    {% if post.photo %}
+    <div class="thumbnail">
+        <img src="{{ post.photo }}" alt="">
+    </div>
+    {% else %}
+            <div class="thumbnail thumbnail-default"></div>
+    {% endif %}
+{% endfor %}
