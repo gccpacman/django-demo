@@ -6,7 +6,7 @@
  <head>
     <meta http-equiv="Content-type" content="text/html"; charset=utf-8 />
     <title>GuestBook</title>
-    <link rel="StyleSheet" href="main.css" type="text/css" />
+    <link rel="StyleSheet" href="/static/main.css" type="text/css" />
  </head>
  <body>
   <div id="main">
@@ -34,6 +34,12 @@
     <div id="entries-area">
     <h2> The comments history</h2>
     <div id="entry">
+        {% for greeting in greeting_list %}
+            <h3>{{greeting.name}}
+                commented at {{greeting.create_at}};</h3>
+            <p>{{greeting.comment}}</p>
+        {% endfor %}
+    <!--    
     <h3> Guest wrote comments(2011/10/01 10:00:00):</h3>
     <p>
         Comments<br/>
@@ -44,6 +50,7 @@
         Comments<br/>
         Comments
     </p>
+    -->
     </div>
     </div>
     </div>

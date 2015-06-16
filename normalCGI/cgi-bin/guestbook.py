@@ -3,6 +3,10 @@
 
 import shelve
 
+from flask import Flask , request, render_template, redirect, escape, Markup
+
+application = Flask(__name__)
+
 DATA_FILE = 'guestbook.dat'
 
 def save_data(name, comment, create_at):
@@ -45,4 +49,17 @@ def load_data():
 
     return greeting_list
 
+@application.route('/')
+def index():
+    """Top patge
+    Use Template to show page
+    """
+    #use the comment data
+    greeting_list = load_data()
+
+    return render_template('index.html', greeting_list = greeting_list)
+
+if __name__=='__main__':
+    #Run  the application when the IP address is 127.0.0.1 and the port is 5000
+    application.run('127.0.0.1', 5000, debug=True)
 
