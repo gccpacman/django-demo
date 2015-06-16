@@ -5,6 +5,8 @@ import shelve
 
 from flask import Flask , request, render_template, redirect, escape, Markup
 
+from datetime import datetime
+
 application = Flask(__name__)
 
 DATA_FILE = 'guestbook.dat'
@@ -58,6 +60,19 @@ def index():
     greeting_list = load_data()
 
     return render_template('index.html', greeting_list = greeting_list)
+
+@application.route('/post', methods=['POST'])
+def post():
+    """Post comment target url
+    """
+    #get the comment data
+    name = request.form.get('name') #name
+    comment = request.form.get('comments') #comment
+    create_at = datetime.now()
+    # save the data
+    save_data(name, comment, create_at)
+    # redirect to the top page
+    return redirect('/')
 
 if __name__=='__main__':
     #Run  the application when the IP address is 127.0.0.1 and the port is 5000
