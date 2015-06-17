@@ -36,8 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
+    #'south',
     'polls',
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,6 +48,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'myprj.urls'
@@ -82,3 +84,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+FIXTURE_DIRS = '/fixtures/'
+
+INTERNAL_IPS=('127.0.0.1',)
+
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimeDebugPanel',
+    'debug_toolbar.panels.setting_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.Signals.SignalDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel',
+)
+
+def custom_show_toolbar(request):
+    return True
+
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS' : False,
+    'SHOW_TOOLBAR_CALLBACK' : custom_show_toolbar,
+    'HIDE_DJANGO_SQL' : False,
+}
+
+
