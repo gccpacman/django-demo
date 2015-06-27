@@ -5,6 +5,7 @@
 [Ii]nclude
 [Ll]ib
 [Ss]cripts
-pyvenv.cfg
+[Ss]hare
+ipyvenv.cfg
 pip-selfcheck.json
 
